@@ -1,2 +1,2 @@
-#This is the project from the WED2 course at OST.
+# This is the project from the WED2 course at OST.
 
