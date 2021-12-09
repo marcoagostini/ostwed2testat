@@ -1,0 +1,37 @@
+{{#if item}}
+    <h1>Welche Elemente möchten Sie bearbeiten?</h1>
+{{else}}
+    <h1>Was für ein Element wollen Sie erstellen?</h1>
+{{/if}}
+
+<div class="itemform">
+    <form action='/item/update' method='post'>
+        <input type="text" name="id" value="{{ item._id }}" hidden>
+        <label>ToDo Name</label>
+        <input type="text" name="name" value="{{ item.name }}" required>
+        <label>Importance</label>
+        <input type="range" name="importance" min="1" max="5" steps="1" value ="{{ item.importance }}" required>
+        <label>DueDate</label>
+        <input type="date" name="duedate" required value="{{ item.duedate }}">
+        <label for="state">Abgeschlossen</label>
+            <input type="checkbox" id="checkbox" name="itemstate" value="true" {{#if item.isdone}} checked="true" {{else}} {{/if}}">
+        <label>Description</label>
+        <input type="text" name="description" value ="{{ item.description }}" required>
+
+             <div>
+                {{#if item}}
+                    <button type="submit" formaction="/item/{{ item._id }}" id="update">Update</button>
+                    <button type="submit" formaction="/updateandoverview" id="create">Update & Overview</button>
+                {{else}}
+                    <button type="submit" formaction="/item" id="create">Create</button>
+                    <button type="submit" formaction="/createandoverview" id="create">Create & Overview</button>
+                {{/if}}
+            </div>
+        </form>
+
+        <form class="sort-buttons">
+            <button type="submit" formaction="/" formmethod="get">Overview</button>
+        </form>
+        </div>
+
+</div>

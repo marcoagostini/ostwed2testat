@@ -1,0 +1,167 @@
+body {
+    font-family: Verdana, "Lucida Sans Unicode", sans-serif
+}
+
+div.itemform {
+    margin: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border-bottom: 1px solid #ddd;
+}
+
+tr {
+    border-bottom: 1pt solid black;
+}
+
+form {
+    width: 100%;
+}
+
+form button {
+    width: 100%;
+}
+
+input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+}
+
+button {
+    color: white;
+    background-color: blue;
+    padding:15px 15px;
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: aqua;
+}
+
+input[type=submit]:hover {
+    background-color: aqua;
+}
+
+input[type=submit] {
+    color: white;
+    background-color: blue;
+    padding:15px 15px;
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+
+.sort-buttons {
+    display: flex;
+    flex-flow: wrap;
+    row-gap: 5px;
+    width: auto;
+}
+
+.sort-buttons form {
+    row-gap: 5px;
+}
+
+.application {
+    max-width: 75%;
+    min-width: 250px;
+    margin: auto;
+}
+
+.left {
+    justify-content: flex-start;
+    width: auto;
+}
+
+.right {
+    justify-content: flex-end;
+    width: auto;
+    align-self: end;
+}
+
+.dark-mode {
+    background-color: black;
+    color: white;
+}
+
+.menue-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.itemform {
+    width: 50%;
+}
+
+.grid-container {
+    justify-content: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    align-self: stretch;
+}
+
+.edit-button {
+    grid-column: 4;
+    grid-row: 1 / 3;
+}
+
+.due-date {
+    grid-column-start: 1;
+    grid-column-end: 2;
+}
+
+.item-name {
+    grid-column: 2;
+}
+
+.item-description {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.item-status {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.item-priority {
+    grid-column: 3;
+    grid-row: 2;
+}
+
+input[type="checkbox"][readonly] {
+    pointer-events: none;
+}
+
+@media only screen and (min-width: 1080px) {
+    .application {
+        max-width: 50%;
+    }
+
+    .sort-buttons {
+        flex-direction: column;
+        flex-flow: row;
+    }
+
+    form button {
+        width: auto;
+    }
+
+    .sort-buttons button {
+        width: 100px;
+    }
+}
+

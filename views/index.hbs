@@ -1,0 +1,59 @@
+<h1>ToDo</h1>
+
+<div class="menue-buttons">
+    <form class="left" action='/item' method='get'>
+        <input  type='submit' value='Create a ToDo'>
+    </form>
+    <form class="right" action="/?toggleDarkMode=true" method="post">
+        <input  type="submit" value="Toggle Mode">
+    </form>
+</div>
+
+<div class="sort-buttons">
+    <form action="/?orderBy=name" method="post">
+        <button>{{#if_eq userSettings.orderBy "name"}}{{#if_eq userSettings.orderDirection 1}}&#9650;{{else}}&#9660;{{/if_eq}}{{else}}By{{/if_eq}} Title</button>
+    </form>
+    <form action="/?orderBy=duedate" method="post">
+        <button>{{#if_eq userSettings.orderBy "duedate"}}{{#if_eq userSettings.orderDirection 1}}&#9650;{{else}}&#9660;{{/if_eq}}{{else}}By{{/if_eq}} Due Date</button>
+    </form>
+    <form action="/?orderBy=creationdate" method="post">
+        <button>{{#if_eq userSettings.orderBy "creationdate"}}{{#if_eq userSettings.orderDirection 1}}&#9650;{{else}}&#9660;{{/if_eq}}{{else}}By{{/if_eq}} Creation Date</button>
+    </form>
+    <form action="/?orderBy=importance" method="post">
+        <button>{{#if_eq userSettings.orderBy "importance"}}{{#if_eq userSettings.orderDirection 1}}&#9650;{{else}}&#9660;{{/if_eq}}{{else}}By{{/if_eq}} Importance</button>
+    </form>
+    <form action="/?filterCompleted=true" method="post">
+        <button>filter Completed</button>
+    </form>
+</div>
+
+<div class="todoitems">
+   {{#each data}}
+       <div class="grid-container">
+           <p class="due-date">{{duedate}}</p>
+           <p class="name">{{name}}</p>
+           <p class="item-description">{{description}}</p>
+           <div class="item-status">
+               {{#if isdone}}
+                   <p>&#9745; is done!</p>
+               {{else}}
+                   <p>&#9744; still needs some work</p>
+               {{/if}}
+           </div>
+           <p class="item-priority">{{importance}} </p>
+           <form action='/item/{{_id}}' method='get' class="edit-button">
+               <input type='submit' value="Edit Item">
+           </form>
+
+       </div>
+       <hr>
+   {{/each}}
+
+</div>
+
+{{#if data}}
+{{else}}
+    <p>There are no entries... Happy free time!</p>
+{{/if}}
+
+
