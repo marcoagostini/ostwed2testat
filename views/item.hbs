@@ -5,18 +5,19 @@
 {{/if}}
 
 <div class="itemform">
-    <form action='/item/update' method='post'>
-        <input type="text" name="id" value="{{ item._id }}" hidden>
-        <label>ToDo Name</label>
-        <input type="text" name="name" value="{{ item.name }}" required>
-        <label>Importance</label>
-        <input type="range" name="importance" min="1" max="5" steps="1" value ="{{ item.importance }}" required>
-        <label>DueDate</label>
-        <input type="date" name="duedate" required value="{{ item.duedate }}">
-        <label for="state">Abgeschlossen</label>
+    <form action="/item/update" method='post'>
+        <label for="id"></label>
+        <input type="text" id="id" name="id" value="{{ item._id }}" hidden>
+        <label for="name">ToDo Name</label>
+        <input type="text" id="name" name="name" value="{{ item.name }}" required>
+        <label for="importance">Importance</label>
+        <input type="range" id="importance" name="importance" min="1" max="5" value ="{{ item.importance }}" required>
+        <label for="duedate">DueDate</label>
+        <input type="date" id="duedate" name="duedate" required value="{{ item.duedate }}">
+        <label for="checkbox">Abgeschlossen</label>
             <input type="checkbox" id="checkbox" name="itemstate" value="true" {{#if item.isdone}} checked="true" {{else}} {{/if}}">
-        <label>Description</label>
-        <input type="text" name="description" value ="{{ item.description }}" required>
+        <label for="description">Description</label>
+        <input type="text" id="description" name="description" value ="{{ item.description }}" required>
 
              <div>
                 {{#if item}}
@@ -32,6 +33,4 @@
         <form class="sort-buttons">
             <button type="submit" formaction="/" formmethod="get">Overview</button>
         </form>
-        </div>
-
 </div>

@@ -20,7 +20,8 @@ export class Item {
 }
 
 export class ItemStore {
-  constructor(public db?: Datastore) {
+  public db : Datastore;
+  constructor( db?: Datastore) {
     const options = process.env.DB_TYPE === "FILE" ? {filename: './data/items.db', autoload: true} : {}
     this.db = db || new Datastore(options);
   }
@@ -35,13 +36,13 @@ export class ItemStore {
         description,
         isdone);
 
-    return this.db!.insert(order);
+    return this.db.insert(order);
   }
 
   async update(id: string, itemName: string, importance: number, duedate: Date, description: string, isdone: boolean): Promise<Document> {
-    const olditem: Item = await this.db!.findOne({_id: id});
+    const olditem: Item = await this.db.findOne({_id: id});
 
-    await this.db!.update({_id: id}, {$set: {"name": itemName,
+    await this.db?.update({_id: id}, {$set: {"name": itemName,
         "importance": importance,
         "duedate": duedate,
         "creationdate": olditem.creationdate,
@@ -50,13 +51,9 @@ export class ItemStore {
 
     return this.get(id);
   }
-  async delete(id: string): Promise<Document> {
-    await this.db!.update({_id: id}, {$set: {"state": "DELETED"}});
-    return this.get(id);
-  }
 
   async get(id: string): Promise<Document> {
-    return this.db!.findOne({_id: id});
+    return this.db.findOne({_id: id});
   }
 
   async all(userSettings: Settings) {
@@ -66,7 +63,7 @@ export class ItemStore {
       searchQuery = { isdone: false };
     }
 
-    return this.db?.find(searchQuery).sort(sortQuery);
+    return this.db.find(searchQuery).sort(sortQuery);
   }
 }
 

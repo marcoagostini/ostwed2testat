@@ -123,10 +123,6 @@ input[type=submit] {
     grid-column-end: 2;
 }
 
-.item-name {
-    grid-column: 2;
-}
-
 .item-description {
     grid-column: 2;
     grid-row: 2;

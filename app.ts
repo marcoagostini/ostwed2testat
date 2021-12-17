@@ -9,14 +9,10 @@ import session from 'express-session';
 import {sessionUserSettings} from './utils/session-middleware';
 
 import exphbs from 'express-handlebars';
-import {Settings} from './utils/session-middleware';
 
 //new for TS
 declare global {
   namespace Express {
-    interface Request {
-      settings: Settings;
-    }
   }
 }
 

@@ -18,7 +18,6 @@ export class itemController {
 
     createItem = async (req:any, res:Response): Promise<void> => {
         let isdone = false;
-
         if (req.body.itemstate) {
             isdone = true;
         }
@@ -45,7 +44,7 @@ export class itemController {
     };
 
     updateItem = async (req:any, res:Response): Promise<void> => {
-        const isdone = req.body.itemstate ? true: false;
+        const isdone = !!req.body.itemstate;
         const item = await itemStore.update(
             req.body.id,
             req.body.name,
@@ -57,7 +56,7 @@ export class itemController {
         if(req.path == "/updateandoverview") {
             res.redirect("/");
         } else {
-            res.render("item", { item: item, userSettings: req.session.userSettings });
+            res.render("/item", { item: item, userSettings: req.session.userSettings });
         }
     };
 

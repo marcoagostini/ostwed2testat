@@ -1,3 +1,5 @@
+// noinspection HttpUrlsUsage
+
 import dotenv from "dotenv";
 
 (async () => {
