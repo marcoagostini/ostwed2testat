@@ -38,7 +38,7 @@ export class ItemStore {
     return this.db!.insert(order);
   }
 
-  async update(id: string, itemName: string, importance: number, duedate: Date, description: string, isdone: boolean): Promise<Document> {
+  async update(id: string, itemName: string, importance: number, duedate: Date, description: string, isdone: boolean): Promise<void> {
     const olditem: Item = await this.db!.findOne({_id: id});
 
     await this.db!.update({_id: id}, {$set: {"name": itemName,
@@ -50,12 +50,12 @@ export class ItemStore {
 
     return this.get(id);
   }
-  async delete(id: string): Promise<Document> {
+  async delete(id: string): Promise<void> {
     await this.db!.update({_id: id}, {$set: {"state": "DELETED"}});
     return this.get(id);
   }
 
-  async get(id: string): Promise<Document> {
+  async get(id: string): Promise<void> {
     return this.db!.findOne({_id: id});
   }
 
